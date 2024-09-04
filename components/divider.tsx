@@ -1,0 +1,42 @@
+import { StyleProp, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import React from 'react';
+
+import { Colors } from '~/constants/Colors';
+
+type Props = {
+  style?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<ViewStyle>;
+  dividerStyle?: StyleProp<ViewStyle>;
+  title?: string;
+};
+
+export default function Divider({ title, style, titleStyle, dividerStyle }: Props) {
+  return (
+    <View style={[styles.container, style]}>
+      <View style={[styles.divider, dividerStyle]}></View>
+      <Text style={[styles.title, titleStyle]}>{title || 'Or'}</Text>
+      <View style={[styles.divider, dividerStyle]}></View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    width: '100%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 16,
+    marginVertical: 16,
+  },
+  divider: {
+    flex: 1,
+    borderBottomWidth: 2,
+    borderColor: Colors.light.primary[100],
+  },
+  title: {
+    color: Colors.light.primary[900],
+    fontSize: 16,
+    fontWeight: 'medium',
+  },
+});
