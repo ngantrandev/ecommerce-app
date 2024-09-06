@@ -10,10 +10,12 @@ export interface InputProps extends TextInputProps {
   style?: StyleProp<ViewStyle>; // Container style
   secure?: boolean; // using when type is password
   inputMode?: InputModeOptions;
+  selectionColor?: string; // Color of cursor
 }
 
 export interface ButtonProps extends TouchableOpacityProps {
   style?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<TextStyle>;
   activeOpacity?: number;
   children?: React.ReactNode;
   title?: string;

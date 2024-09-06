@@ -21,7 +21,7 @@ export default function OnBoarding() {
   }, [navigation]);
   return (
     <View style={styles.container}>
-      <Image style={styles.background} source={require('../assets/images/onboarding.png')} />
+      <Image style={styles.background} source={require('~/assets/images/onboarding.png')} />
       <Button style={{}} activeOpacity={0.8} onPress={handleStart}>
         <Text style={styles.text}>Get Started</Text>
       </Button>

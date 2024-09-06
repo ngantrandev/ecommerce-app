@@ -1,4 +1,4 @@
-import { Alert, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import React, { memo, useCallback, useState } from 'react';
 
 import { Colors } from '~/constants/Colors';

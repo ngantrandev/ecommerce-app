@@ -28,7 +28,7 @@ export const Colors = {
     },
     blue: '#1877F2',
     text: '#11181C',
-    background: '#fff',
+    background: '#FFFFFF',
     tint: tintColorLight,
     icon: '#687076',
     tabIconDefault: '#687076',

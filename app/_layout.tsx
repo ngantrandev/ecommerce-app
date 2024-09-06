@@ -23,7 +23,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (boarded !== null) {
-      const initialRoute = routeNames.signin;
+      const initialRoute = routeNames.homeTabs;
       router.push(initialRoute);
     }
   }, [boarded]);

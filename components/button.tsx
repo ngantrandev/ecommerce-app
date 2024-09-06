@@ -6,6 +6,7 @@ import { ButtonProps } from '~/types/styles';
 
 function Button({
   style,
+  titleStyle,
   activeOpacity = 0.8,
   children,
   title,
@@ -20,20 +21,22 @@ function Button({
       activeOpacity={activeOpacity}
       style={[
         styles.button,
-        style,
         outlined && styles.outlined,
         disabled && {
           backgroundColor: Colors.light.primary[200],
         },
         textonly && {
           backgroundColor: 'transparent',
+          width: 'auto',
+          height: 'auto',
         },
+        style,
       ]}
       onPress={disabled ? undefined : onPress}
       disabled={disabled}
       {...props}
     >
-      {title ? <Text style={styles.title}>{title}</Text> : null}
+      {title ? <Text style={[styles.title, titleStyle]}>{title}</Text> : null}
       {children}
     </TouchableOpacity>
   );
