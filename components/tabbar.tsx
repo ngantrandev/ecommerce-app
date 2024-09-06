@@ -1,28 +1,26 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
 
 import { Colors } from '~/constants/Colors';
 
-export default function MyTabbar({ state, descriptors, navigation, ...props }) {
-
+export default memo(function MyTabbar({ state, descriptors, navigation }: BottomTabBarProps) {
   return (
     <View
       style={{
         flexDirection: 'row',
-        height: 50,
         backgroundColor: Colors.light.primary[0],
         borderTopWidth: 1,
-        borderColor: Colors.light.primary[100],
+        borderTopColor: Colors.light.primary[100],
+        paddingTop: 16,
       }}
     >
       {state.routes.map((route, index: number) => {
         const { options } = descriptors[route.key];
-        const label =
-          options.tabBarLabel !== undefined
-            ? options.tabBarLabel
-            : options.title !== undefined
-              ? options.title
-              : route.name;
+
+        const { tabBarIcon } = options;
+
+        const label = options.tabBarLabel || options.title || route.name;
 
         const isFocused = state.index === index;
 
@@ -54,12 +52,31 @@ export default function MyTabbar({ state, descriptors, navigation, ...props }) {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
           >
-            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>{label}</Text>
+            {tabBarIcon &&
+              tabBarIcon({
+                focused: isFocused,
+
+                color: isFocused ? Colors.light.primary[900] : Colors.light.primary[400],
+                size: 24,
+              })}
+            <Text
+              style={{
+                textTransform: 'capitalize',
+                color: isFocused ? Colors.light.primary[900] : Colors.light.primary[400],
+                fontWeight: 'medium',
+              }}
+            >
+              <>{label}</>
+            </Text>
           </TouchableOpacity>
         );
       })}
     </View>
   );
-}
+});

@@ -11,32 +11,26 @@ const actionButton = [
   {
     id: 1,
     title: 'All',
-    onPress: () => console.log('Button pressed'),
   },
   {
     id: 2,
     title: 'Tshirts',
-    onPress: () => console.log('Button pressed'),
   },
   {
     id: 3,
     title: 'Jean',
-    onPress: () => console.log('Button pressed'),
   },
   {
     id: 4,
     title: 'Shoes',
-    onPress: () => console.log('Button pressed'),
   },
   {
     id: 5,
     title: 'Skirts',
-    onPress: () => console.log('Button pressed'),
   },
   {
     id: 6,
     title: 'Dresses',
-    onPress: () => console.log('Button pressed'),
   },
 ];
 
@@ -56,7 +50,7 @@ function ActionButtonList() {
           gap: 20,
         }}
       >
-        {actionButton.map(({ title, onPress, id }, index) => (
+        {actionButton.map(({ title, id }, index) => (
           <Button
             key={index}
             outlined

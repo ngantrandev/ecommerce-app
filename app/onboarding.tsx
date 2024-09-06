@@ -12,6 +12,7 @@ export default function OnBoarding() {
   const navigation = useNavigation();
 
   const handleStart = useCallback(async () => {
+    navigation.setOptions({ navigationBarHidden: false });
     router.push(routeNames.homeTabs);
     await setItem(DataKeyNames.onboarded, 'true');
   }, []);

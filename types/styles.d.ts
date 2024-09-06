@@ -24,3 +24,9 @@ export interface ButtonProps extends TouchableOpacityProps {
   outlined?: boolean;
   textonly?: boolean;
 }
+
+export interface IconProps {
+  style?: StyleProp<ViewStyle>;
+  size?: number;
+  color?: string;
+}

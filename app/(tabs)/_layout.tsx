@@ -3,10 +3,16 @@ import { memo } from 'react';
 import { Text, View } from 'react-native';
 
 import Button from '~/components/button';
-import Bell from '~/components/vectors/bell';
+import BellIcon from '~/components/vectors/bell';
+import MyTabbar from '~/components/tabbar';
+import AccountIcon from '~/components/vectors/account';
+import CartIcon from '~/components/vectors/cart';
+import HeartIcon from '~/components/vectors/heart';
+import HomeIcon from '~/components/vectors/home';
+import SearchIcon from '~/components/vectors/search';
 import { Colors } from '~/constants/Colors';
 
-const Header = memo(function Header() {
+const HomeHeader = memo(function Header() {
   return (
     <View
       style={{
@@ -29,13 +35,13 @@ const Header = memo(function Header() {
       </Text>
 
       <Button textonly activeOpacity={0.5}>
-        <Bell />
+        <BellIcon />
       </Button>
     </View>
   );
 });
 
-export default function HomeLayout() {
+export default memo(function HomeLayout() {
   return (
     <Tabs
       sceneContainerStyle={{
@@ -43,25 +49,59 @@ export default function HomeLayout() {
         paddingHorizontal: 24,
       }}
       screenOptions={{}}
+      tabBar={(props) => <MyTabbar {...props} />}
     >
       <Tabs.Screen
         name="index"
         options={{
+          title: 'Home',
           header(props) {
-            return <Header {...props} />;
+            return <HomeHeader {...props} />;
+          },
+
+          tabBarIcon(props) {
+            return <HomeIcon {...props} />;
           },
         }}
       />
-      <Tabs.Screen name="search" />
-      <Tabs.Screen name="saved" />
-      <Tabs.Screen name="cart" />
+      <Tabs.Screen
+        name="search"
+        options={{
+          title: 'Search',
+          tabBarIcon(props) {
+            return <SearchIcon {...props} />;
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="saved"
+        options={{
+          title: 'Saved',
+          tabBarIcon(props) {
+            return <HeartIcon {...props} />;
+          },
+        }}
+      />
+      <Tabs.Screen
+        name="cart"
+        options={{
+          title: 'Cart',
+          tabBarIcon(props) {
+            return <CartIcon {...props} />;
+          },
+        }}
+      />
       <Tabs.Screen
         name="(accounts)"
         options={{
           title: 'Account',
           headerShown: false,
+
+          tabBarIcon(props) {
+            return <AccountIcon {...props} />;
+          },
         }}
       />
     </Tabs>
   );
-}
+});
