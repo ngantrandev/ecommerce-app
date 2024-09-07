@@ -12,6 +12,7 @@ const routeNames = {
   onboarding: 'onboarding',
   register: 'register',
   signin: 'signin',
+  notification: 'notification',
 };
 
 export default routeNames;

@@ -1,4 +1,4 @@
-import { Tabs } from 'expo-router';
+import { Tabs, useNavigation } from 'expo-router';
 import { memo } from 'react';
 import { Text, View } from 'react-native';
 
@@ -13,6 +13,8 @@ import SearchIcon from '~/components/vectors/search';
 import { Colors } from '~/constants/Colors';
 
 const HomeHeader = memo(function Header() {
+  const navigation = useNavigation();
+
   return (
     <View
       style={{
@@ -34,8 +36,14 @@ const HomeHeader = memo(function Header() {
         Discover
       </Text>
 
-      <Button textonly activeOpacity={0.5}>
-        <BellIcon />
+      <Button
+        textonly
+        activeOpacity={0.5}
+        onPress={() => {
+          navigation.navigate('notification');
+        }}
+      >
+        <BellIcon color={Colors.light.primary[900]} />
       </Button>
     </View>
   );
@@ -98,7 +106,7 @@ export default memo(function HomeLayout() {
           headerShown: false,
 
           tabBarIcon(props) {
-            return <AccountIcon {...props} />;
+            return <AccountIcon {...props} opacity={0} />;
           },
         }}
       />

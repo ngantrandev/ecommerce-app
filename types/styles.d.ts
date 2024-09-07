@@ -29,4 +29,5 @@ export interface IconProps {
   style?: StyleProp<ViewStyle>;
   size?: number;
   color?: string;
+  opacity?: number;
 }
