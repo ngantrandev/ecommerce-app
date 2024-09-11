@@ -11,6 +11,7 @@ import HeartIcon from '~/components/vectors/heart';
 import HomeIcon from '~/components/vectors/home';
 import SearchIcon from '~/components/vectors/search';
 import { Colors } from '~/constants/Colors';
+import BackIcon from '~/components/vectors/back';
 
 const HomeHeader = memo(function Header() {
   const navigation = useNavigation();
@@ -49,6 +50,53 @@ const HomeHeader = memo(function Header() {
   );
 });
 
+const HeaderLayout = memo(function HeaderLayout({  navigation, route,  options }) {
+  const title = options.title || route.name;
+
+  return (
+    <View
+      style={{
+        width: '100%',
+        height: 'auto',
+        marginTop: 12,
+        marginBottom: 16,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Button
+        textonly
+        activeOpacity={0.5}
+        onPress={() => {
+          navigation.goBack();
+        }}
+      >
+        <BackIcon color={Colors.light.primary[900]} />
+      </Button>
+
+      <Text
+        style={{
+          color: Colors.light.primary[900],
+          fontSize: 40,
+          fontWeight: 'bold',
+        }}
+      >
+        {title}
+      </Text>
+
+      <Button
+        textonly
+        activeOpacity={0.5}
+        onPress={() => {
+          navigation.navigate('notification');
+        }}
+      >
+        <BellIcon color={Colors.light.primary[900]} />
+      </Button>
+    </View>
+  );
+});
+
 export default memo(function HomeLayout() {
   return (
     <Tabs
@@ -56,7 +104,11 @@ export default memo(function HomeLayout() {
         backgroundColor: Colors.light.primary[0],
         paddingHorizontal: 24,
       }}
-      screenOptions={{}}
+      screenOptions={{
+        header(props) {
+          return <HeaderLayout {...props} />;
+        },
+      }}
       tabBar={(props) => <MyTabbar {...props} />}
     >
       <Tabs.Screen

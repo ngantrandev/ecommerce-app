@@ -7,6 +7,7 @@ import AccountIcon from '~/components/vectors/account';
 import LocationIcon from '~/components/vectors/location';
 import WalletIcon from '~/components/vectors/wallet';
 import CardIcon from '~/components/vectors/card';
+import BellIcon from '~/components/vectors/bell';
 
 const getIcon = {
   voucher: <DiscountIcon />,
@@ -201,19 +202,52 @@ function ListItem({ item, index }) {
   );
 }
 
+function ListNotification() {
+  return (
+    <SectionList
+      style={styles.list}
+      showsVerticalScrollIndicator={false}
+      sections={sectionList}
+      renderItem={(props) => <ListItem {...props} />}
+      renderSectionHeader={({ section: { title } }) => (
+        <Text style={styles.listHeader}>{title}</Text>
+      )}
+      renderSectionFooter={() => <View style={styles.listFooter} />}
+    />
+  );
+}
+
 export default function NotificationScreen() {
   return (
     <View style={styles.container}>
-      <SectionList
-        style={styles.list}
-        showsVerticalScrollIndicator={false}
-        sections={sectionList}
-        renderItem={(props) => <ListItem {...props} />}
-        renderSectionHeader={({ section: { title } }) => (
-          <Text style={styles.listHeader}>{title}</Text>
-        )}
-        renderSectionFooter={() => <View style={styles.listFooter} />}
-      />
+      {sectionList?.length > 0 ? (
+        <ListNotification />
+      ) : (
+        <View
+          style={{
+            width: '100%',
+            height: '100%',
+            paddingHorizontal: 50,
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <BellIcon size={64} />
+          <Text style={{ fontSize: 20, fontWeight: 'bold', textAlign: 'center' }}>
+            You haven’t gotten any notifications yet!
+          </Text>
+          <Text
+            style={{
+              fontSize: 16,
+              color: Colors.light.primary[500],
+              textAlign: 'center',
+            }}
+          >
+            We’ll alert you when something cool happens.
+          </Text>
+        </View>
+      )}
     </View>
   );
 }

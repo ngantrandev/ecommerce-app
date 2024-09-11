@@ -12,8 +12,8 @@ export default function CartIcon({ style, size, color = Colors.light.primary[300
       style={[
         {
           aspectRatio: 1,
-          width: size || 30,
-          height: size || 30,
+          width: size || 24,
+          height: size || 24,
         },
         style,
       ]}

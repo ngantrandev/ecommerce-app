@@ -45,6 +45,8 @@ function ActionButtonList() {
     >
       <ScrollView
         horizontal={true}
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
         style={{
           flexDirection: 'row',
           gap: 20,

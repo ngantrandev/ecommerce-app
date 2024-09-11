@@ -25,7 +25,7 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (boarded !== null) {
-      const initialRoute = routeNames.notification;
+      const initialRoute = routeNames.search;
       router.push(initialRoute);
     }
   }, [boarded]);

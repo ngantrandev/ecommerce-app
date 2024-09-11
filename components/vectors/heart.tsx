@@ -12,8 +12,8 @@ export default function HeartIcon({ style, size, color = Colors.light.primary[40
       style={[
         {
           aspectRatio: 1,
-          width: size || 30,
-          height: size || 30,
+          width: size || 24,
+          height: size || 24,
         },
         style,
       ]}

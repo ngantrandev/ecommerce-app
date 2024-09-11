@@ -13,6 +13,7 @@ const routeNames = {
   register: 'register',
   signin: 'signin',
   notification: 'notification',
+  search: 'search',
 };
 
 export default routeNames;

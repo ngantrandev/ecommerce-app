@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import Svg, { ClipPath, Defs, G, Path, Use } from 'react-native-svg';
+import Svg, { Path } from 'react-native-svg';
 
 type Props = {
   style?: StyleProp<ViewStyle>;
@@ -13,8 +13,8 @@ export default function GoogleLogo({ style, size }: Props) {
       style={[
         {
           aspectRatio: 1,
-          width: size || 30,
-          height: size || 30,
+          width: size || 24,
+          height: size || 24,
         },
         style,
       ]}

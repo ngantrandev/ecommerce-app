@@ -18,8 +18,8 @@ export default function SearchIcon({ style, size, color = Colors.light.primary[3
       style={[
         {
           aspectRatio: 1,
-          width: size || 30,
-          height: size || 30,
+          width: size || 24,
+          height: size || 24,
         },
         style,
       ]}

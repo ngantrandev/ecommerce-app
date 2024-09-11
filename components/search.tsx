@@ -8,17 +8,22 @@ import Button from '~/components/button';
 
 type Props = {
   style?: StyleProp<ViewStyle>;
+  playholder?: string;
+  value?: string;
+  onChangeText?: (text: string) => void;
 };
 
-export default memo(function SearchInput({ style }: Props) {
+export default memo(function SearchInput({ style, playholder, value, onChangeText }: Props) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, style]}>
       <Input
-        placeholder="Search for clothes..."
+        placeholder={playholder || 'Search for clothes...'}
         inputStyle={{
           height: 52,
           paddingLeft: 60,
         }}
+        value={value}
+        onChangeText={onChangeText}
       />
       <View
         style={{
