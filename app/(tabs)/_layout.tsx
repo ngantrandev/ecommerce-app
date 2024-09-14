@@ -50,7 +50,7 @@ const HomeHeader = memo(function Header() {
   );
 });
 
-const HeaderLayout = memo(function HeaderLayout({  navigation, route,  options }) {
+const HeaderLayout = memo(function HeaderLayout({ navigation, route, options }) {
   const title = options.title || route.name;
 
   return (

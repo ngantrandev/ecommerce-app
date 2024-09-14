@@ -13,9 +13,15 @@ type Props = {
 export default function Divider({ title, style, titleStyle, dividerStyle }: Props) {
   return (
     <View style={[styles.container, style]}>
-      <View style={[styles.divider, dividerStyle]}></View>
-      <Text style={[styles.title, titleStyle]}>{title || 'Or'}</Text>
-      <View style={[styles.divider, dividerStyle]}></View>
+      {title ? (
+        <View>
+          <View style={[styles.divider, dividerStyle]}></View>
+          <Text style={[styles.title, titleStyle]}>{title || 'Or'}</Text>
+          <View style={[styles.divider, dividerStyle]}></View>
+        </View>
+      ) : (
+        <View style={[styles.divider, dividerStyle]}></View>
+      )}
     </View>
   );
 }

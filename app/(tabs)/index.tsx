@@ -1,11 +1,12 @@
-import { Image } from 'expo-image';
+import { useNavigation } from 'expo-router';
 import { useState } from 'react';
-import { FlatList, ScrollView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, ScrollView, StyleSheet, View } from 'react-native';
 
 import Button from '~/components/button';
+import ProductCard from '~/components/productcard';
 import SearchInput from '~/components/search';
-import HeartIcon from '~/components/vectors/heart';
 import { Colors } from '~/constants/Colors';
+import { ProductType } from '~/types/product';
 
 const actionButton = [
   {
@@ -88,145 +89,74 @@ function ActionButtonList() {
   );
 }
 
-const ProductList = [
+const ProductList: ProductType[] = [
   {
     id: 1,
-    title: 'Tshirt',
-    image: 'https://www.aimsindia.com/wp-content/uploads/2022/06/world-environment-1024x683.png',
+    name: 'Tshirt',
+    img: 'https://www.aimsindia.com/wp-content/uploads/2022/06/world-environment-1024x683.png',
     price: 100,
+    discount: 10,
   },
   {
     id: 2,
     name: 'Product 2',
     price: 200,
+    discount: 52,
   },
   {
     id: 3,
     name: 'Product 3',
+    img: 'https://www.aimsindia.com/wp-content/uploads/2022/06/world-environment-1024x683.png',
     price: 300,
+    discount: 52,
   },
   {
     id: 4,
     name: 'Product 4',
     price: 400,
+    discount: 52,
   },
   {
     id: 5,
     name: 'Product 5',
     price: 500,
+    discount: 52,
   },
   {
     id: 6,
     name: 'Product 6',
     price: 600,
+    discount: 52,
   },
   {
     id: 7,
     name: 'Product 7',
     price: 700,
+    discount: 52,
   },
   {
     id: 8,
     name: 'Product 8',
     price: 800,
+    discount: 52,
   },
   {
     id: 9,
     name: 'Product 9',
     price: 900,
+    discount: 52,
   },
   {
     id: 10,
     name: 'Product 10',
     price: 1000,
+    discount: 52,
   },
 ];
 
-function ProductCard() {
-  return (
-    <View
-      style={{
-        position: 'relative',
-        // width: 200,
-        flex: 1,
-        overflow: 'hidden',
-        gap: 8,
-        // margin: 10,
-      }}
-    >
-      <Image
-        style={{
-          borderRadius: 10,
-          width: '100%',
-          height: 250,
-        }}
-        source="https://product.hstatic.net/1000369857/product/ao_thun_co_tron_ats08_mau_nau_1_026b0a00b02f45bfafa91b13c0109f2c.jpg"
-        placeholder={{ blurhash }}
-        contentFit="cover"
-        transition={1000}
-      />
-      <View
-        style={{
-          width: '100%',
-        }}
-      >
-        <Text
-          style={{
-            textTransform: 'capitalize',
-            fontSize: 16,
-            fontWeight: 'bold',
-            color: Colors.light.primary[900],
-            marginBottom: 3,
-          }}
-        >
-          Tshirt Polo Special
-        </Text>
-        <Text
-          style={{
-            textTransform: 'capitalize',
-            fontWeight: 'semibold',
-            fontSize: 12,
-          }}
-        >
-          <Text
-            style={{
-              color: Colors.light.primary[500],
-            }}
-          >
-            $500
-          </Text>
-          <Text
-            style={{
-              color: Colors.light.error.red,
-            }}
-          >
-            {' '}
-            -52%{' '}
-          </Text>
-        </Text>
-      </View>
-
-      <Button
-        textonly
-        activeOpacity={0.5}
-        style={{
-          position: 'absolute',
-          padding: 8,
-          backgroundColor: Colors.light.primary[0],
-          top: 12,
-          right: 12,
-        }}
-      >
-        <HeartIcon size={18} />
-      </Button>
-    </View>
-  );
-}
-
-const blurhash =
-  '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
-
 export default function HomeScreen() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <SearchInput />
@@ -238,13 +168,10 @@ export default function HomeScreen() {
         contentContainerStyle={{ gap: 20 }}
         columnWrapperStyle={{ gap: 20 }}
         data={ProductList}
-        renderItem={(item) => <ProductCard />}
+        renderItem={({ item }) => <ProductCard product={item} navigation={navigation} />}
         numColumns={2}
         showsVerticalScrollIndicator={false}
-
-        // automaticallyAdjustContentInsets={true}
       />
-      {/* </ScrollView> */}
     </View>
   );
 }

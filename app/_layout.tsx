@@ -57,7 +57,7 @@ export default function RootLayout() {
                   fontWeight: 'bold',
                 }}
               >
-                Notification
+                {props.children}
               </Text>
             </View>
           );
@@ -72,6 +72,7 @@ export default function RootLayout() {
         contentStyle: {
           backgroundColor: Colors.light.primary[0],
           marginHorizontal: 24,
+          marginTop: 60,
         },
       }}
     >
@@ -90,6 +91,14 @@ export default function RootLayout() {
         name={routeNames.notification}
         options={{
           title: 'Notification',
+          headerShown: true,
+        }}
+      />
+
+      <Stack.Screen
+        name="products/[id]"
+        options={{
+          title: 'Product Detail',
           headerShown: true,
         }}
       />
