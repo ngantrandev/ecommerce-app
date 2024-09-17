@@ -1,5 +1,6 @@
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, Pressable } from 'react-native';
 import React, { memo, useState } from 'react';
+import { useNavigation } from 'expo-router';
 
 import Image from '~/components/image';
 import { Colors } from '~/constants/Colors';
@@ -144,7 +145,7 @@ const BottomSheetView = memo(() => {
   );
 });
 
-const Content = memo(() => {
+const Content = memo(({ navigation }: { navigation: any }) => {
   return (
     <View
       style={{
@@ -164,7 +165,15 @@ const Content = memo(() => {
       >
         Regular Fit Slogan
       </Text>
-      <View
+      <Pressable
+        onPress={() => {
+          navigation.navigate({
+            name: 'reviews/[id]',
+            params: {
+              id: '1',
+            },
+          });
+        }}
         style={{
           flexDirection: 'row',
           alignItems: 'center',
@@ -189,7 +198,7 @@ const Content = memo(() => {
         >
           (45 reviews)
         </Text>
-      </View>
+      </Pressable>
       <Text
         style={{
           color: Colors.light.primary[500],
@@ -217,6 +226,8 @@ const Content = memo(() => {
 });
 
 export default function ProductDetail() {
+  const navigation = useNavigation();
+
   return (
     <View
       style={{
@@ -233,7 +244,7 @@ export default function ProductDetail() {
         }}
       >
         <Header />
-        <Content />
+        <Content navigation={navigation} />
       </ScrollView>
       <BottomSheetView />
     </View>

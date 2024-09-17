@@ -102,6 +102,13 @@ export default function RootLayout() {
           headerShown: true,
         }}
       />
+      <Stack.Screen
+        name="reviews/[id]"
+        options={{
+          title: 'Reviews',
+          headerShown: true,
+        }}
+      />
     </Stack>
   );
 }
