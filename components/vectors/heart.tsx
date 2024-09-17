@@ -4,7 +4,9 @@ import { Path, Svg } from 'react-native-svg';
 import { Colors } from '~/constants/Colors';
 import { IconProps } from '~/types/styles';
 
-export default function HeartIcon({ style, size, color = Colors.light.primary[400] }: IconProps) {
+export default function HeartIcon({ style, size, active }: IconProps) {
+  const color = active ? Colors.light.error.red : Colors.light.primary[400];
+
   return (
     <Svg
       viewBox="0 0 23 20"

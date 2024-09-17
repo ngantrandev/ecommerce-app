@@ -30,4 +30,5 @@ export interface IconProps {
   size?: number;
   color?: string;
   opacity?: number;
+  active?: boolean;
 }
