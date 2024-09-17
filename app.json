@@ -27,7 +27,9 @@
       "output": "static",
       "favicon": "./assets/images/logo.png"
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router"
+    ],
     "experiments": {
       "typedRoutes": true
     },
@@ -38,6 +40,12 @@
       "eas": {
         "projectId": "1984c4ab-39b2-4740-b689-c7adb0808b67"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/1984c4ab-39b2-4740-b689-c7adb0808b67"
     }
   }
 }
