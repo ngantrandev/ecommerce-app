@@ -143,9 +143,9 @@ export default memo(function HomeLayout() {
         }}
       />
       <Tabs.Screen
-        name="cart"
+        name="(carts)"
         options={{
-          title: 'Cart',
+          title: 'My Cart',
           tabBarIcon(props) {
             return <CartIcon {...props} />;
           },

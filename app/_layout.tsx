@@ -26,7 +26,8 @@ export default function RootLayout() {
   useEffect(() => {
     if (boarded !== null) {
       // const initialRoute = routeNames.search;
-      const initialRoute = '(tabs)/saved';
+      // const initialRoute = '(tabs)/saved';
+      const initialRoute = '(tabs)/(carts)';
       router.push(initialRoute);
     }
   }, [boarded]);

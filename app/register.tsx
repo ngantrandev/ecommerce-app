@@ -122,7 +122,13 @@ export default function RegisterScreen() {
           }}
         >
           <GoogleLogo size={24} />
-          <Text style={{ fontWeight: 'medium', color: Colors.light.primary[900], fontSize: 16 }}>
+          <Text
+            style={{
+              fontWeight: 'medium',
+              color: Colors.light.primary[900],
+              fontSize: 16,
+            }}
+          >
             Sign Up with Google
           </Text>
         </View>
@@ -140,7 +146,13 @@ export default function RegisterScreen() {
           }}
         >
           <FaceBookLogo size={24} />
-          <Text style={{ fontWeight: 'medium', color: Colors.light.primary[0], fontSize: 16 }}>
+          <Text
+            style={{
+              fontWeight: 'medium',
+              color: Colors.light.primary[0],
+              fontSize: 16,
+            }}
+          >
             Sign Up with Facebook
           </Text>
         </View>
@@ -161,7 +173,12 @@ export default function RegisterScreen() {
             gap: 4,
           }}
         >
-          <Text style={{ color: Colors.light.primary[500], fontWeight: 500 }}>
+          <Text
+            style={{
+              color: Colors.light.primary[500],
+              fontWeight: 500,
+            }}
+          >
             Already have an account?
           </Text>
           <Text
