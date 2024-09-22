@@ -27,7 +27,8 @@ export default function RootLayout() {
     if (boarded !== null) {
       // const initialRoute = routeNames.search;
       // const initialRoute = '(tabs)/saved';
-      const initialRoute = '(tabs)/(carts)';
+      // const initialRoute = '(tabs)/(carts)';
+      const initialRoute = 'checkout';
       router.push(initialRoute);
     }
   }, [boarded]);
@@ -108,6 +109,13 @@ export default function RootLayout() {
         name="reviews/[id]"
         options={{
           title: 'Reviews',
+          headerShown: true,
+        }}
+      />
+      <Stack.Screen
+        name="checkout"
+        options={{
+          title: 'Checkout',
           headerShown: true,
         }}
       />

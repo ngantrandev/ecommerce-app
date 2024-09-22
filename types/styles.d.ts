@@ -11,6 +11,8 @@ export interface InputProps extends TextInputProps {
   secure?: boolean; // using when type is password
   inputMode?: InputModeOptions;
   selectionColor?: string; // Color of cursor
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
 }
 
 export interface ButtonProps extends TouchableOpacityProps {

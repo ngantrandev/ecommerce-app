@@ -18,7 +18,8 @@ function Input({
   selectionColor = Colors.light.primary[300],
   secure = false,
   inputMode,
-
+  leftIcon,
+  rightIcon,
   ...props
 }: InputProps) {
   const [isSecure, setIsSecure] = useState(secure);
@@ -31,17 +32,11 @@ function Input({
   return (
     <View style={[styles.container, style]}>
       {label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
-      <View
-        style={{
-          position: 'relative',
-          width: '100%',
-          flexDirection: 'row',
-          alignItems: 'center',
-          justifyContent: 'flex-end',
-        }}
-      >
+      <View style={[styles['input-container'], isFocused && styles.focusInput]}>
+        {leftIcon && leftIcon}
+
         <TextInput
-          style={[styles.input, inputStyle, isFocused && styles.focusInput]}
+          style={[styles.input, inputStyle]}
           selectionColor={selectionColor}
           placeholder={placeholder}
           onChangeText={onTextChange}
@@ -57,14 +52,18 @@ function Input({
           {...props}
         />
 
+        {rightIcon && rightIcon}
+
         {secure && value && (
           <Pressable
             onPress={togglePassword}
             style={{
-              position: 'absolute',
-              padding: 10,
-              right: 10,
               flexDirection: 'row',
+              padding: 10,
+              paddingRight: 0,
+              height: '100%',
+              justifyContent: 'center',
+              alignItems: 'center',
             }}
           >
             {isSecure ? <FontAwesomeIcon icon={faEyeSlash} /> : <FontAwesomeIcon icon={faEye} />}
@@ -82,13 +81,21 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: Colors.light.primary[0],
   },
-  input: {
-    width: '100%',
+  'input-container': {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    paddingLeft: 20,
+    paddingRight: 20,
     borderWidth: 1,
     borderColor: Colors.light.primary[100],
     borderRadius: 10,
-    paddingHorizontal: 20,
-    paddingVertical: 8,
+    height: '100%',
+    columnGap: 12,
+  },
+  input: {
+    flex: 1,
+    // backgroundColor: 'red',
   },
   focusInput: {
     borderColor: Colors.light.primary[300],
