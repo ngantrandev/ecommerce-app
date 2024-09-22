@@ -14,7 +14,7 @@ export default function Divider({ title, style, titleStyle, dividerStyle }: Prop
   return (
     <View style={[styles.container, style]}>
       {title ? (
-        <View>
+        <View style={styles['flex-row-between']}>
           <View style={[styles.divider, dividerStyle]}></View>
           <Text style={[styles.title, titleStyle]}>{title || 'Or'}</Text>
           <View style={[styles.divider, dividerStyle]}></View>
@@ -29,11 +29,13 @@ export default function Divider({ title, style, titleStyle, dividerStyle }: Prop
 const styles = StyleSheet.create({
   container: {
     width: '100%',
+    marginVertical: 16,
+  },
+  'flex-row-between': {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: 16,
-    marginVertical: 16,
   },
   divider: {
     flex: 1,

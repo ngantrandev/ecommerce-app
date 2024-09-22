@@ -42,7 +42,7 @@ export default function RegisterScreen() {
   }, [fullName, email, password, confirmPassword]);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <Text style={styles.headertitle}>Create an account</Text>
         <Text style={styles.headersubtitle}>Let's create your account</Text>
@@ -53,12 +53,18 @@ export default function RegisterScreen() {
           placeholder="Enter your full name"
           value={fullName}
           onTextChange={handleFullNameChange}
+          inputContainerStyle={{
+            height: 52,
+          }}
         />
         <Input
           label="Email"
           placeholder="Enter your email"
           value={email}
           onTextChange={handleEmailChange}
+          inputContainerStyle={{
+            height: 52,
+          }}
         />
         <Input
           label="Password"
@@ -66,6 +72,9 @@ export default function RegisterScreen() {
           value={password}
           onTextChange={handlePasswordChange}
           secure
+          inputContainerStyle={{
+            height: 52,
+          }}
         />
         <Input
           label="Confirm Password"
@@ -73,6 +82,9 @@ export default function RegisterScreen() {
           value={confirmPassword}
           onTextChange={handleConfirmPasswordChange}
           secure
+          inputContainerStyle={{
+            height: 52,
+          }}
         />
 
         <Button
@@ -200,8 +212,6 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    paddingLeft: 24,
-    paddingRight: 24,
     backgroundColor: 'white',
     position: 'relative',
   },

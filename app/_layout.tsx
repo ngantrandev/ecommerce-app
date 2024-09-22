@@ -28,7 +28,7 @@ export default function RootLayout() {
       // const initialRoute = routeNames.search;
       // const initialRoute = '(tabs)/saved';
       // const initialRoute = '(tabs)/(carts)';
-      const initialRoute = 'checkout';
+      const initialRoute = '(tabs)';
       router.push(initialRoute);
     }
   }, [boarded]);
@@ -88,8 +88,25 @@ export default function RootLayout() {
           },
         }}
       />
-      <Stack.Screen name={routeNames.register} />
-      <Stack.Screen name={routeNames.signin} />
+      <Stack.Screen
+        name={routeNames.register}
+        options={{
+          contentStyle: {
+            backgroundColor: Colors.light.primary[0],
+            marginTop: 0,
+            marginHorizontal: 24,
+            paddingBottom: 24,
+          },
+        }}
+      />
+      <Stack.Screen name={routeNames.signin} options={{
+        contentStyle:{
+          backgroundColor: Colors.light.primary[0],
+          marginTop: 0,
+          marginHorizontal: 24,
+          paddingBottom: 24,
+        }
+      }} />
       <Stack.Screen
         name={routeNames.notification}
         options={{

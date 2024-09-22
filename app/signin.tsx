@@ -32,7 +32,7 @@ export default function SignInScreen() {
   }, [email, password]);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <Text style={styles.headertitle}>Login to your account</Text>
         <Text style={styles.headersubtitle}>It's great to see you again</Text>
@@ -44,6 +44,9 @@ export default function SignInScreen() {
           value={email}
           onTextChange={handleEmailChange}
           inputMode="email"
+          inputContainerStyle={{
+            height: 52,
+          }}
         />
         <Input
           label="Password"
@@ -51,6 +54,9 @@ export default function SignInScreen() {
           value={password}
           onTextChange={handlePasswordChange}
           secure
+          inputContainerStyle={{
+            height: 52,
+          }}
         />
 
         <Button
@@ -161,8 +167,6 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    paddingLeft: 24,
-    paddingRight: 24,
     backgroundColor: Colors.light.primary[0],
     position: 'relative',
   },

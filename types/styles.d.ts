@@ -7,6 +7,7 @@ export interface InputProps extends TextInputProps {
   onTextChange?: (text: string) => void;
   labelStyle?: StyleProp<ViewStyle>;
   inputStyle?: StyleProp<ViewStyle>;
+  inputContainerStyle?: StyleProp<ViewStyle>;
   style?: StyleProp<ViewStyle>; // Container style
   secure?: boolean; // using when type is password
   inputMode?: InputModeOptions;

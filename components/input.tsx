@@ -14,6 +14,7 @@ function Input({
   onTextChange,
   labelStyle,
   inputStyle,
+  inputContainerStyle,
   style,
   selectionColor = Colors.light.primary[300],
   secure = false,
@@ -32,7 +33,9 @@ function Input({
   return (
     <View style={[styles.container, style]}>
       {label && <Text style={[styles.label, labelStyle]}>{label}</Text>}
-      <View style={[styles['input-container'], isFocused && styles.focusInput]}>
+      <View
+        style={[styles['input-container'], inputContainerStyle, isFocused && styles.focusInput]}
+      >
         {leftIcon && leftIcon}
 
         <TextInput
