@@ -26,9 +26,9 @@ export default function RootLayout() {
   useEffect(() => {
     if (boarded !== null) {
       // const initialRoute = routeNames.search;
-      // const initialRoute = '(tabs)/saved';
+      const initialRoute = 'address';
       // const initialRoute = '(tabs)/(carts)';
-      const initialRoute = '(tabs)';
+      // const initialRoute = '(tabs)';
       router.push(initialRoute);
     }
   }, [boarded]);
@@ -95,18 +95,21 @@ export default function RootLayout() {
             backgroundColor: Colors.light.primary[0],
             marginTop: 0,
             marginHorizontal: 24,
-            paddingBottom: 24,
+            paddingBottom: 10,
           },
         }}
       />
-      <Stack.Screen name={routeNames.signin} options={{
-        contentStyle:{
-          backgroundColor: Colors.light.primary[0],
-          marginTop: 0,
-          marginHorizontal: 24,
-          paddingBottom: 24,
-        }
-      }} />
+      <Stack.Screen
+        name={routeNames.signin}
+        options={{
+          contentStyle: {
+            backgroundColor: Colors.light.primary[0],
+            marginTop: 0,
+            marginHorizontal: 24,
+            paddingBottom: 10,
+          },
+        }}
+      />
       <Stack.Screen
         name={routeNames.notification}
         options={{
@@ -133,6 +136,13 @@ export default function RootLayout() {
         name="checkout"
         options={{
           title: 'Checkout',
+          headerShown: true,
+        }}
+      />
+      <Stack.Screen
+        name="address"
+        options={{
+          title: 'Address',
           headerShown: true,
         }}
       />

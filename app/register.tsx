@@ -42,134 +42,137 @@ export default function RegisterScreen() {
   }, [fullName, email, password, confirmPassword]);
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <Text style={styles.headertitle}>Create an account</Text>
-        <Text style={styles.headersubtitle}>Let's create your account</Text>
-      </View>
-      <View style={styles.form}>
-        <Input
-          label="Full Name"
-          placeholder="Enter your full name"
-          value={fullName}
-          onTextChange={handleFullNameChange}
-          inputContainerStyle={{
-            height: 52,
-          }}
-        />
-        <Input
-          label="Email"
-          placeholder="Enter your email"
-          value={email}
-          onTextChange={handleEmailChange}
-          inputContainerStyle={{
-            height: 52,
-          }}
-        />
-        <Input
-          label="Password"
-          placeholder="Enter your password"
-          value={password}
-          onTextChange={handlePasswordChange}
-          secure
-          inputContainerStyle={{
-            height: 52,
-          }}
-        />
-        <Input
-          label="Confirm Password"
-          placeholder="Confirm your password"
-          value={confirmPassword}
-          onTextChange={handleConfirmPasswordChange}
-          secure
-          inputContainerStyle={{
-            height: 52,
-          }}
-        />
-
-        <Button
-          textonly
-          activeOpacity={0.5}
-          style={{
-            height: 'auto',
-            marginTop: 5,
-            marginBottom: 10,
-          }}
-        >
-          <Text
-            style={{
-              width: '100%',
-              overflow: 'hidden',
-            }}
-          >
-            <Text>By signing up you agree to our </Text>
-            <Text
+    <View style={styles.container}>
+      <View
+        style={{
+          flex: 1,
+        }}
+      >
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.header}>
+            <Text style={styles.headertitle}>Create an account</Text>
+            <Text style={styles.headersubtitle}>Let's create your account</Text>
+          </View>
+          <View style={styles.form}>
+            <Input
+              label="Full Name"
+              placeholder="Enter your full name"
+              value={fullName}
+              onTextChange={handleFullNameChange}
+              inputContainerStyle={{
+                height: 52,
+              }}
+            />
+            <Input
+              label="Email"
+              placeholder="Enter your email"
+              value={email}
+              onTextChange={handleEmailChange}
+              inputContainerStyle={{
+                height: 52,
+              }}
+            />
+            <Input
+              label="Password"
+              placeholder="Enter your password"
+              value={password}
+              onTextChange={handlePasswordChange}
+              secure
+              inputContainerStyle={{
+                height: 52,
+              }}
+            />
+            <Input
+              label="Confirm Password"
+              placeholder="Confirm your password"
+              value={confirmPassword}
+              onTextChange={handleConfirmPasswordChange}
+              secure
+              inputContainerStyle={{
+                height: 52,
+              }}
+            />
+            <Button
+              textonly
+              activeOpacity={0.5}
               style={{
-                fontWeight: 'bold',
-                textDecorationLine: 'underline',
+                height: 'auto',
+                marginTop: 5,
+                marginBottom: 10,
               }}
             >
-              Terms, Privacy Policy, and Cookie Use
-            </Text>
-          </Text>
-        </Button>
-
-        <Button title="Create an Account" disabled={!isFormFilled} />
+              <Text
+                style={{
+                  width: '100%',
+                  overflow: 'hidden',
+                }}
+              >
+                <Text>By signing up you agree to our </Text>
+                <Text
+                  style={{
+                    fontWeight: 'bold',
+                    textDecorationLine: 'underline',
+                  }}
+                >
+                  Terms, Privacy Policy, and Cookie Use
+                </Text>
+              </Text>
+            </Button>
+            <Button title="Create an Account" disabled={!isFormFilled} />
+          </View>
+          <Divider title="Or" />
+          <Button
+            outlined
+            activeOpacity={0.5}
+            style={{
+              marginBottom: 16,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              <GoogleLogo size={24} />
+              <Text
+                style={{
+                  fontWeight: 'medium',
+                  color: Colors.light.primary[900],
+                  fontSize: 16,
+                }}
+              >
+                Sign Up with Google
+              </Text>
+            </View>
+          </Button>
+          <Button
+            style={{
+              backgroundColor: Colors.light.blue,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              <FaceBookLogo size={24} />
+              <Text
+                style={{
+                  fontWeight: 'medium',
+                  color: Colors.light.primary[0],
+                  fontSize: 16,
+                }}
+              >
+                Sign Up with Facebook
+              </Text>
+            </View>
+          </Button>
+        </ScrollView>
       </View>
-
-      <Divider title="Or" />
-
-      <Button
-        outlined
-        activeOpacity={0.5}
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 8,
-          }}
-        >
-          <GoogleLogo size={24} />
-          <Text
-            style={{
-              fontWeight: 'medium',
-              color: Colors.light.primary[900],
-              fontSize: 16,
-            }}
-          >
-            Sign Up with Google
-          </Text>
-        </View>
-      </Button>
-      <Button
-        style={{
-          backgroundColor: Colors.light.blue,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 8,
-          }}
-        >
-          <FaceBookLogo size={24} />
-          <Text
-            style={{
-              fontWeight: 'medium',
-              color: Colors.light.primary[0],
-              fontSize: 16,
-            }}
-          >
-            Sign Up with Facebook
-          </Text>
-        </View>
-      </Button>
-
       <Button
         textonly
         activeOpacity={0.2}
@@ -204,7 +207,7 @@ export default function RegisterScreen() {
           </Text>
         </View>
       </Button>
-    </ScrollView>
+    </View>
   );
 }
 
@@ -213,7 +216,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: 'white',
-    position: 'relative',
+    justifyContent: 'space-between',
+    rowGap: 16,
   },
   header: {
     width: '100%',

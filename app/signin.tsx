@@ -32,104 +32,105 @@ export default function SignInScreen() {
   }, [email, password]);
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <View style={styles.header}>
-        <Text style={styles.headertitle}>Login to your account</Text>
-        <Text style={styles.headersubtitle}>It's great to see you again</Text>
-      </View>
-      <View style={styles.form}>
-        <Input
-          label="Email"
-          placeholder="Enter your email"
-          value={email}
-          onTextChange={handleEmailChange}
-          inputMode="email"
-          inputContainerStyle={{
-            height: 52,
-          }}
-        />
-        <Input
-          label="Password"
-          placeholder="Enter your password"
-          value={password}
-          onTextChange={handlePasswordChange}
-          secure
-          inputContainerStyle={{
-            height: 52,
-          }}
-        />
-
-        <Button
-          textonly
-          activeOpacity={0.2}
-          style={{
-            height: 'auto',
-            marginTop: 5,
-            marginBottom: 10,
-          }}
-        >
-          <View
-            style={{
-              width: '100%',
-              flexDirection: 'row',
-            }}
-          >
-            <Text>Forgot your password? </Text>
-            <Text
+    <View style={styles.container}>
+      <View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.header}>
+            <Text style={styles.headertitle}>Login to your account</Text>
+            <Text style={styles.headersubtitle}>It's great to see you again</Text>
+          </View>
+          <View style={styles.form}>
+            <Input
+              label="Email"
+              placeholder="Enter your email"
+              value={email}
+              onTextChange={handleEmailChange}
+              inputMode="email"
+              inputContainerStyle={{
+                height: 52,
+              }}
+            />
+            <Input
+              label="Password"
+              placeholder="Enter your password"
+              value={password}
+              onTextChange={handlePasswordChange}
+              secure
+              inputContainerStyle={{
+                height: 52,
+              }}
+            />
+            <Button
+              textonly
+              activeOpacity={0.2}
               style={{
-                fontWeight: 'bold',
-                textDecorationLine: 'underline',
+                height: 'auto',
+                marginTop: 5,
+                marginBottom: 10,
               }}
             >
-              Reset your password
-            </Text>
+              <View
+                style={{
+                  width: '100%',
+                  flexDirection: 'row',
+                }}
+              >
+                <Text>Forgot your password? </Text>
+                <Text
+                  style={{
+                    fontWeight: 'bold',
+                    textDecorationLine: 'underline',
+                  }}
+                >
+                  Reset your password
+                </Text>
+              </View>
+            </Button>
+            <Button title="Login" disabled={!isFormFilled} />
           </View>
-        </Button>
-
-        <Button title="Login" disabled={!isFormFilled} />
+          <Divider title="Or" />
+          <Button
+            outlined
+            activeOpacity={0.5}
+            style={{
+              marginBottom: 16,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              <GoogleLogo size={24} />
+              <Text
+                style={{ fontWeight: 'medium', color: Colors.light.primary[900], fontSize: 16 }}
+              >
+                Login with Google
+              </Text>
+            </View>
+          </Button>
+          <Button
+            style={{
+              backgroundColor: Colors.light.blue,
+            }}
+          >
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                gap: 8,
+              }}
+            >
+              <FaceBookLogo size={24} />
+              <Text style={{ fontWeight: 'medium', color: Colors.light.primary[0], fontSize: 16 }}>
+                Login with Facebook
+              </Text>
+            </View>
+          </Button>
+        </ScrollView>
       </View>
-
-      <Divider title="Or" />
-
-      <Button
-        outlined
-        activeOpacity={0.5}
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 8,
-          }}
-        >
-          <GoogleLogo size={24} />
-          <Text style={{ fontWeight: 'medium', color: Colors.light.primary[900], fontSize: 16 }}>
-            Login with Google
-          </Text>
-        </View>
-      </Button>
-      <Button
-        style={{
-          backgroundColor: Colors.light.blue,
-        }}
-      >
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            gap: 8,
-          }}
-        >
-          <FaceBookLogo size={24} />
-          <Text style={{ fontWeight: 'medium', color: Colors.light.primary[0], fontSize: 16 }}>
-            Login with Facebook
-          </Text>
-        </View>
-      </Button>
-
       <Button
         textonly
         activeOpacity={0.2}
@@ -159,7 +160,7 @@ export default function SignInScreen() {
           </Text>
         </View>
       </Button>
-    </ScrollView>
+    </View>
   );
 }
 
@@ -168,7 +169,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: Colors.light.primary[0],
-    position: 'relative',
+    justifyContent: 'space-between',
+    rowGap: 16,
   },
   header: {
     width: '100%',
