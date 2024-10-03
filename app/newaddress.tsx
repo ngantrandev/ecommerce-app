@@ -1,13 +1,15 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
-import Checkbox from 'expo-checkbox';
 
 import Input from '~/components/input';
 import Button from '~/components/button';
 import { Colors } from '~/constants/Colors';
 import Image from '~/components/image';
 import Dropdown from '~/components/dropdown';
+import Checkbox from '~/components/checkbox';
+import Popup from '~/components/popup';
+import SuccessIcon from '~/components/vectors/success';
 
 const data: { label: string; value: string }[] = [
   { label: 'Item 1', value: '1' },
@@ -21,8 +23,11 @@ const data: { label: string; value: string }[] = [
 ];
 
 export default function NewAddressScreen() {
+  const [modalVisible, setModalVisible] = useState(true);
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null);
+
+  const checkboxRef = useRef<any>(null);
 
   return (
     <View
@@ -31,6 +36,30 @@ export default function NewAddressScreen() {
         height: '100%',
       }}
     >
+      <Popup
+        visible={modalVisible}
+        icon={
+          <SuccessIcon
+            size={63}
+            style={{
+              marginBottom: 20,
+            }}
+          />
+        }
+        title="Congratulations!"
+        subtitle="Your new address has been added."
+        listButton={[
+          <Button
+            title="Thanks"
+            onPress={() => {
+              setModalVisible(false);
+            }}
+          />,
+        ]}
+        onClose={() => {
+          setModalVisible(false);
+        }}
+      />
       <Image source={require('~/assets/images/Map.png')} />
 
       <BottomSheet ref={bottomSheetRef} snapPoints={['80%']}>
@@ -80,17 +109,19 @@ export default function NewAddressScreen() {
                 marginTop: 10,
               }}
             >
-              <Checkbox
-                value={true}
-                style={{
-                  borderRadius: 5,
-                }}
-                color={Colors.light.primary[900]}
-              />
-              <Text>Make this as a default address</Text>
+              <Checkbox ref={checkboxRef} />
+
+              <Text style={{ color: Colors.light.primary[500] }}>
+                Make this as a default address
+              </Text>
             </View>
           </View>
-          <Button title="Add" />
+          <Button
+            title="Add"
+            onPress={() => {
+              setModalVisible(true);
+            }}
+          />
         </BottomSheetView>
       </BottomSheet>
     </View>
