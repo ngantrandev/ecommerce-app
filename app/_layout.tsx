@@ -2,6 +2,7 @@ import { router, Stack } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { Text } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import routeNames from '~/configs/routes';
 import { Colors } from '~/constants/Colors';
@@ -26,7 +27,7 @@ export default function RootLayout() {
   useEffect(() => {
     if (boarded !== null) {
       // const initialRoute = routeNames.search;
-      const initialRoute = 'address';
+      const initialRoute = 'newaddress';
       // const initialRoute = '(tabs)/(carts)';
       // const initialRoute = '(tabs)';
       router.push(initialRoute);
@@ -38,114 +39,122 @@ export default function RootLayout() {
   }
 
   return (
-    <Stack
-      screenOptions={{
-        headerTransparent: true,
-        headerStyle: {
-          backgroundColor: Colors.light.primary[0],
-        },
-
-        headerTitle(props) {
-          return (
-            <View
-              style={{
-                height: 'auto',
-                // padding: 16,
-              }}
-              {...props}
-            >
-              <Text
+    <GestureHandlerRootView>
+      <Stack
+        screenOptions={{
+          headerTransparent: true,
+          headerStyle: {
+            backgroundColor: Colors.light.primary[0],
+          },
+          headerTitle(props) {
+            return (
+              <View
                 style={{
-                  fontSize: 24,
-                  fontWeight: 'bold',
+                  height: 'auto',
+                  // padding: 16,
                 }}
+                {...props}
               >
-                {props.children}
-              </Text>
-            </View>
-          );
-        },
-
-        title: 'Ecommerce App',
-        headerTitleAlign: 'center',
-        headerShown: false,
-        statusBarColor: Colors.light.primary[0],
-
-        statusBarStyle: 'dark',
-        contentStyle: {
-          backgroundColor: Colors.light.primary[0],
-          marginHorizontal: 24,
-          marginTop: 60,
-        },
-      }}
-    >
-      <Stack.Screen name={routeNames.onboarding} />
-      <Stack.Screen
-        name={routeNames.homeTabs}
-        options={{
-          contentStyle: {
-            marginHorizontal: 0,
+                <Text
+                  style={{
+                    fontSize: 24,
+                    fontWeight: 'bold',
+                  }}
+                >
+                  {props.children}
+                </Text>
+              </View>
+            );
           },
-        }}
-      />
-      <Stack.Screen
-        name={routeNames.register}
-        options={{
+          title: 'Ecommerce App',
+          headerTitleAlign: 'center',
+          headerShown: false,
+          statusBarColor: Colors.light.primary[0],
+          statusBarStyle: 'dark',
           contentStyle: {
             backgroundColor: Colors.light.primary[0],
-            marginTop: 0,
             marginHorizontal: 24,
-            paddingBottom: 10,
+            marginTop: 60,
           },
         }}
-      />
-      <Stack.Screen
-        name={routeNames.signin}
-        options={{
-          contentStyle: {
-            backgroundColor: Colors.light.primary[0],
-            marginTop: 0,
-            marginHorizontal: 24,
-            paddingBottom: 10,
-          },
-        }}
-      />
-      <Stack.Screen
-        name={routeNames.notification}
-        options={{
-          title: 'Notification',
-          headerShown: true,
-        }}
-      />
-
-      <Stack.Screen
-        name="products/[id]"
-        options={{
-          title: 'Product Detail',
-          headerShown: true,
-        }}
-      />
-      <Stack.Screen
-        name="reviews/[id]"
-        options={{
-          title: 'Reviews',
-          headerShown: true,
-        }}
-      />
-      <Stack.Screen
-        name="checkout"
-        options={{
-          title: 'Checkout',
-          headerShown: true,
-        }}
-      />
-      <Stack.Screen
-        name="address"
-        options={{
-          title: 'Address',
-          headerShown: true,
-        }}
-      />
-    </Stack>
+      >
+        <Stack.Screen name={routeNames.onboarding} />
+        <Stack.Screen
+          name={routeNames.homeTabs}
+          options={{
+            contentStyle: {
+              marginHorizontal: 0,
+            },
+          }}
+        />
+        <Stack.Screen
+          name={routeNames.register}
+          options={{
+            contentStyle: {
+              backgroundColor: Colors.light.primary[0],
+              marginTop: 0,
+              marginHorizontal: 24,
+              paddingBottom: 10,
+            },
+          }}
+        />
+        <Stack.Screen
+          name={routeNames.signin}
+          options={{
+            contentStyle: {
+              backgroundColor: Colors.light.primary[0],
+              marginTop: 0,
+              marginHorizontal: 24,
+              paddingBottom: 10,
+            },
+          }}
+        />
+        <Stack.Screen
+          name={routeNames.notification}
+          options={{
+            title: 'Notification',
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="products/[id]"
+          options={{
+            title: 'Product Detail',
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="reviews/[id]"
+          options={{
+            title: 'Reviews',
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="checkout"
+          options={{
+            title: 'Checkout',
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="address"
+          options={{
+            title: 'Address',
+            headerShown: true,
+          }}
+        />
+        <Stack.Screen
+          name="newaddress"
+          options={{
+            title: 'New Address',
+            headerShown: true,
+            contentStyle: {
+              marginHorizontal: 0,
+            },
+          }}
+        />
+      </Stack>
+    </GestureHandlerRootView>
   );
 }
