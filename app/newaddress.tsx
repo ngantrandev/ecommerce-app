@@ -1,15 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native';
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
+import Checkbox from 'expo-checkbox';
+import { Dropdown } from 'react-native-element-dropdown';
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 import Input from '~/components/input';
 import Button from '~/components/button';
 import { Colors } from '~/constants/Colors';
-import Image from '~/components/image';
-import Dropdown from '~/components/dropdown';
-import Checkbox from '~/components/checkbox';
-import Popup from '~/components/popup';
-import SuccessIcon from '~/components/vectors/success';
 
 const data: { label: string; value: string }[] = [
   { label: 'Item 1', value: '1' },
@@ -23,11 +21,19 @@ const data: { label: string; value: string }[] = [
 ];
 
 export default function NewAddressScreen() {
-  const [modalVisible, setModalVisible] = useState(true);
   // ref
   const bottomSheetRef = useRef<BottomSheet>(null);
 
-  const checkboxRef = useRef<any>(null);
+  const [value, setValue] = useState('');
+  const [isFocus, setIsFocus] = useState(false);
+
+  // callbacks
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log('handleSheetChanges', index);
+    if (index === 0) {
+      setTimeout(() => {}, 1000);
+    }
+  }, []);
 
   return (
     <View
@@ -36,33 +42,15 @@ export default function NewAddressScreen() {
         height: '100%',
       }}
     >
-      <Popup
-        visible={modalVisible}
-        icon={
-          <SuccessIcon
-            size={63}
-            style={{
-              marginBottom: 20,
-            }}
-          />
-        }
-        title="Congratulations!"
-        subtitle="Your new address has been added."
-        listButton={[
-          <Button
-            title="Thanks"
-            onPress={() => {
-              setModalVisible(false);
-            }}
-          />,
-        ]}
-        onClose={() => {
-          setModalVisible(false);
+      <View
+        style={{
+          width: '100%',
+          height: '80%',
+          backgroundColor: 'pink',
         }}
       />
-      <Image source={require('~/assets/images/Map.png')} />
 
-      <BottomSheet ref={bottomSheetRef} snapPoints={['80%']}>
+      <BottomSheet ref={bottomSheetRef} onChange={handleSheetChanges}>
         <BottomSheetView style={styles.contentContainer}>
           <Text
             style={{
@@ -77,23 +65,35 @@ export default function NewAddressScreen() {
               width: '100%',
             }}
           >
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: '500',
-              }}
-            >
-              Address Tag
-            </Text>
-
             <Dropdown
+              style={{}}
+              placeholderStyle={{}}
+              selectedTextStyle={{}}
+              inputSearchStyle={{ backgroundColor: 'red' }}
+              iconStyle={{}}
               data={data}
-              labelField={'label'}
-              valueField={'value'}
-              onChange={() => {}}
               search
+              maxHeight={300}
+              labelField="label"
+              valueField="value"
+              placeholder={!isFocus ? 'Select item' : '...'}
+              searchPlaceholder="Search..."
+              value={value}
+              onFocus={() => setIsFocus(true)}
+              onBlur={() => setIsFocus(false)}
+              onChange={(item) => {
+                setValue(item.value);
+                setIsFocus(false);
+              }}
+              // renderLeftIcon={() => (
+              //   <AntDesign
+              //     style={{}}
+              //     color={isFocus ? 'blue' : 'black'}
+              //     name="Safety"
+              //     size={20}
+              //   />
+              // )}
             />
-
             <Input
               inputContainerStyle={{
                 width: '100%',
@@ -109,19 +109,17 @@ export default function NewAddressScreen() {
                 marginTop: 10,
               }}
             >
-              <Checkbox ref={checkboxRef} />
-
-              <Text style={{ color: Colors.light.primary[500] }}>
-                Make this as a default address
-              </Text>
+              <Checkbox
+                value={true}
+                style={{
+                  borderRadius: 5,
+                }}
+                color={Colors.light.primary[900]}
+              />
+              <Text>Make this as a default address</Text>
             </View>
           </View>
-          <Button
-            title="Add"
-            onPress={() => {
-              setModalVisible(true);
-            }}
-          />
+          <Button title="Add" />
         </BottomSheetView>
       </BottomSheet>
     </View>
